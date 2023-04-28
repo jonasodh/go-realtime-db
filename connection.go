@@ -15,12 +15,6 @@ func ConnectToMySQL() (*sql.DB, error) {
 	if err != nil {
 		log.Fatalf("failed to connect: %v", err)
 	}
-	defer func(db *sql.DB) {
-		err := db.Close()
-		if err != nil {
-			log.Fatal("Error closing MySQL connection:", err)
-		}
-	}(db)
 	if err := db.Ping(); err != nil {
 		log.Fatalf("failed to ping: %v", err)
 	}
